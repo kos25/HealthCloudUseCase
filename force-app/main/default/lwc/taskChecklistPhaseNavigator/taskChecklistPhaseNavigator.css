@@ -1,0 +1,40 @@
+.loading-region {
+    min-height: 4rem;
+}
+
+.phase-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.phase-nav {
+    flex: 1 1 16rem;
+    min-width: 0;
+}
+
+.phase-panel {
+    flex: 4 1 19rem;
+    min-width: 0;
+}
+
+.task-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 8rem;
+    align-items: center;
+    column-gap: 0.75rem;
+}
+
+.task-info {
+    overflow-wrap: anywhere;
+}
+
+.task-action {
+    min-height: 2rem;
+}
+
+@media (pointer: coarse) {
+    .task-action {
+        min-height: 2.75rem;
+    }
+}

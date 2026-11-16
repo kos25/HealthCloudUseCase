@@ -1,0 +1,19 @@
+{
+  "folders": [
+    {
+      "path": "c:/Users/kaustubhjaiswal/OneDrive - Nagarro/Desktop/HealthCloudUseCase"
+    }
+  ],
+  "settings": {
+    "eslint.workingDirectories": [
+      "c:/Users/kaustubhjaiswal/OneDrive - Nagarro/Desktop/HealthCloudUseCase"
+    ],
+    "eslint.validate": [
+      "javascript",
+      "typescript"
+    ],
+    "eslint.options": {
+      "overrideConfigFile": "c:\\Users\\kaustubhjaiswal\\OneDrive - Nagarro\\Desktop\\HealthCloudUseCase\\.eslintrc.json"
+    }
+  }
+}

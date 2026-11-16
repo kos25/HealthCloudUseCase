@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Service Appointment Task Completed</masterLabel>
+    <isExposed>false</isExposed>
+    <description>Signals that a checklist task was completed on a service appointment.</description>
+    <lightningMessageFields>
+        <fieldName>serviceAppointmentId</fieldName>
+        <description>The ID of the service appointment whose task was completed.</description>
+    </lightningMessageFields>
+</LightningMessageChannel>

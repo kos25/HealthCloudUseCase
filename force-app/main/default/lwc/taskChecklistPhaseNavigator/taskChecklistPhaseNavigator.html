@@ -1,0 +1,102 @@
+<template>
+    <lightning-card title="Visit Tasks" icon-name="standard:task">
+        <div class="slds-p-horizontal_medium">
+            <template lwc:if={isLoading}>
+                <div class="loading-region slds-is-relative">
+                    <lightning-spinner alternative-text="Loading visit tasks" size="small"></lightning-spinner>
+                </div>
+            </template>
+            <template lwc:elseif={loadError}>
+                <p class="slds-text-color_error" role="alert">Unable to load visit tasks. Refresh the page to try again.</p>
+            </template>
+            <template lwc:elseif={activePhase}>
+                <div class="phase-layout">
+                    <lightning-vertical-navigation
+                        class="phase-nav"
+                        selected-item={activePhase.name}
+                        onselect={handlePhaseSelect}
+                    >
+                        <lightning-vertical-navigation-section label="Visit Phases">
+                            <template for:each={taskTypes} for:item="phase">
+                                <lightning-vertical-navigation-item
+                                    key={phase.type}
+                                    label={phase.navigationLabel}
+                                    name={phase.name}
+                                ></lightning-vertical-navigation-item>
+                            </template>
+                        </lightning-vertical-navigation-section>
+                    </lightning-vertical-navigation>
+
+                    <section class="phase-panel" aria-labelledby="active-phase-title">
+                        <header class="slds-m-bottom_small">
+                            <h3 id="active-phase-title" class="slds-text-heading_small">{activePhase.label}</h3>
+                            <template lwc:if={activePhase.sharedDueDate}>
+                                <p class="slds-text-body_small slds-text-color_weak">
+                                    Due <lightning-formatted-date-time
+                                        value={activePhase.sharedDueDate}
+                                        month="short"
+                                        day="numeric"
+                                        year="numeric"
+                                        time-zone="UTC"
+                                    ></lightning-formatted-date-time>
+                                </p>
+                            </template>
+                        </header>
+
+                        <template lwc:if={completionError}>
+                            <p class="slds-text-color_error slds-m-bottom_small" role="alert">Unable to update the checklist. Refresh the page to check the task status.</p>
+                        </template>
+
+                        <ul>
+                            <template for:each={activeTasks} for:item="task">
+                                <li key={task.Id} class="task-row slds-border_top slds-p-vertical_x-small">
+                                    <div class="task-info">
+                                        <a href={task.taskUrl} target="_blank" rel="noopener">{task.Subject}</a>
+                                        <template lwc:if={task.showDueDate}>
+                                            <p class="slds-text-body_small slds-text-color_weak">
+                                                Due <lightning-formatted-date-time
+                                                    value={task.ActivityDate}
+                                                    month="short"
+                                                    day="numeric"
+                                                    year="numeric"
+                                                    time-zone="UTC"
+                                                ></lightning-formatted-date-time>
+                                            </p>
+                                        </template>
+                                    </div>
+
+                                    <div class="task-action slds-grid slds-grid_align-end slds-grid_vertical-align-center">
+                                        <template lwc:if={task.isCompleted}>
+                                            <span class="slds-text-color_success slds-text-body_small slds-nowrap" role="status">
+                                                <lightning-icon
+                                                    class="slds-m-right_xx-small"
+                                                    icon-name="utility:success"
+                                                    size="xx-small"
+                                                    variant="success"
+                                                ></lightning-icon>
+                                                Completed
+                                            </span>
+                                        </template>
+                                        <template lwc:else>
+                                            <lightning-button
+                                                label="Mark Complete"
+                                                variant="neutral"
+                                                aria-label={task.completionLabel}
+                                                disabled={isCompleting}
+                                                data-id={task.Id}
+                                                onclick={handleComplete}
+                                            ></lightning-button>
+                                        </template>
+                                    </div>
+                                </li>
+                            </template>
+                        </ul>
+                    </section>
+                </div>
+            </template>
+            <template lwc:else>
+                <p class="slds-text-color_weak">No tasks for this visit.</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>

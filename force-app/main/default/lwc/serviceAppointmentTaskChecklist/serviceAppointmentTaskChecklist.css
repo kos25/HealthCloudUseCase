@@ -1,0 +1,97 @@
+/* Group Section */
+.task-group {
+    border: 1px solid #d8dde6;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 16px;
+    background: #ffffff;
+}
+
+/* Group Title */
+.group-title {
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: #16325c;
+}
+
+/* Task Row */
+.task-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+/* Remove border for last item */
+.task-row:last-child {
+    border-bottom: none;
+}
+
+/* Task Content */
+.task-content {
+    flex: 1;
+}
+
+/* Task Info */
+.task-info a {
+    font-weight: 600;
+    font-size: 14px;
+    color: #0176d3;
+    text-decoration: none;
+}
+
+.task-info a:hover {
+    text-decoration: underline;
+}
+
+/* Due Date */
+.due-date {
+    font-size: 12px;
+    color: #6b6b6b;
+    margin-top: 4px;
+}
+
+/* Action Area */
+.task-action {
+    margin-left: 12px;
+}
+
+/* Completed Text */
+.completed-text {
+    color: #2e844a;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+/* ========================= */
+/* 📱 MOBILE RESPONSIVE */
+/* ========================= */
+
+@media (max-width: 768px) {
+
+    .task-row {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 12px 0;
+    }
+
+    .task-action {
+        margin-top: 10px;
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .task-action lightning-button {
+        width: 100%;
+    }
+
+    .task-group {
+        padding: 10px;
+    }
+
+    .group-title {
+        font-size: 15px;
+    }
+}

@@ -1,0 +1,60 @@
+<template>
+
+    <template for:each={taskTypes} for:item="group">
+
+        <div key={group.type} class="task-group">
+
+            <div class="group-title">
+                {group.type}
+            </div>
+
+            <template for:each={group.tasks} for:item="task">
+
+                <div key={task.Id} class="task-row">
+
+                    <!-- Task Info -->
+                    <div class="task-content">
+
+                        <div class="task-info">
+                            <a href={task.taskUrl} target="_blank">
+                                {task.Subject}
+                            </a>
+
+                            <div class="due-date">
+                                Due: {task.ActivityDate}
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Action -->
+                    <div class="task-action">
+
+                        <template if:false={task.isCompleted}>
+                            <lightning-button
+                                label="Mark Complete"
+                                variant="brand"
+                                size="small"
+                                disabled={isCompleting}
+                                data-id={task.Id}
+                                onclick={handleComplete}>
+                            </lightning-button>
+                        </template>
+
+                        <template if:true={task.isCompleted}>
+                            <span class="completed-text">
+                                ✔ Completed
+                            </span>
+                        </template>
+
+                    </div>
+
+                </div>
+
+            </template>
+
+        </div>
+
+    </template>
+
+</template>

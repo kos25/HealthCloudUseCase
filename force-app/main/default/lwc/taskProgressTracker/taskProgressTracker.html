@@ -1,0 +1,18 @@
+<template>
+    <div class="tracker-container">
+        <div class="header-row">
+            <div class="title">
+                TASK PROGRESS TRACKER ({completed} / {total} Completed)
+            </div>
+            <lightning-button-icon
+                icon-name="utility:refresh"
+                alternative-text="Refresh"
+                onclick={handleRefresh}
+                size="small"
+            ></lightning-button-icon>
+        </div>
+        <div class="progress-bar-container">
+            <div class="progress-bar" style={progressStyle}></div>
+        </div>
+    </div>
+</template>
